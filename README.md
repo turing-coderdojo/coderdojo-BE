@@ -6,7 +6,8 @@ application up and running.
 Things you may want to cover:
 
 #### Versions
-- ruby 2.6.0
+
+- ruby 2.4.1
 - rails 5.2.3
 
 * System dependencies
