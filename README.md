@@ -5,7 +5,7 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+#### Versions
 - ruby 2.4.1
 - rails 5.2.3
 
