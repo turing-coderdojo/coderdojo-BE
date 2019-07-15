@@ -12,3 +12,7 @@ before_script:
 - psql -c 'create database travis_ci_test;' -U postgres
 script:
 - bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: S0VfjFM++XkGY5RoR2816efsDOy2NGSv7gAYqTuiIvszie4tqW0+S4IMA3Z4khcbQu9kPOryiXKZlYuEmQo8f8SyMVZD8f1x9rl6alt/ZlcUhlgRKuzR9+FvoHH3CXKRgDBOnEhk+2uh/qAhTwQ6+sMywgeRo+YabQYo9A86n/krn/6tJDrGCPLEOheaZ+C4AGvNOHx1AyDbrQWRcz7lQeIehDMxYxgLwVm/IQehNNT1d8t2xhKPc3RuwWHJVasH+0a4zGUmUmGj6ARt0jmTHkKhAQVKtQw4akB6xCq4kRrGzU/vI+U35/LrOOYihMQpmEds7ixkJStzothrlRcW/StDywKQ9wbOOeOFlOWO+JzEwkdBVnjEnCD76DIpT8U6Z+nxdFAHTEROAuok0moW+XQ5Napc94HA3F0oorvsp3tVCc3Y9oxts0rmJtSHvNp7fBPc3fsfEonzY+y4R93X23qfTVA7m0OOX83O/e4i1hfFb6WgPSSsHbqNPznfY3dx1dtmWRp//fgDO35EflxXimyItj68me+bOcdeMXbQy5K3lc/XtoHa6tH4xXxdtSsBUqXdHWU5Wzkbo5ZBWsKjbkgRFSp1RbZEzZe0OAI+2SMuSSONvhPrnNvDuofJupEkHPQqA7XH2rpSpX6v1qwuY/VUZXfoLGkxx+y7h7um2Yw=
