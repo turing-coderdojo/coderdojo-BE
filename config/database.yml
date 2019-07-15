@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: coderdojo_be_production
-  username: coderdojo_be
-  password: <%= ENV['CODERDOJO_BE_DATABASE_PASSWORD'] %>
