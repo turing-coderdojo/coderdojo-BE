@@ -11,7 +11,7 @@ class Mutations::CreateUserTest < ActiveSupport::TestCase
         name: 'Matt W',
         username: 'Duce',
         password: 'password',
-        street_1: '123 main',
+        street1: '123 main',
         city: 'Denver',
         state: 'CO',
         zip: '80128'
