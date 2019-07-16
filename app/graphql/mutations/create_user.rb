@@ -1,12 +1,11 @@
 module Mutations
-  class CreateUser < BaseMutation
+  class CreateUser < Mutations::BaseMutation
     argument :email, String, required: false
     argument :nickname, String, required: true
     argument :password, String, required: true
     argument :role, Integer, required: true
     argument :name, String, required: false
     argument :phone_number, String, required: false
-    argument :guardian_id, Integer, required: false
     # return type from the mutation
    type Types::UserType
 
@@ -15,8 +14,7 @@ module Mutations
             password: nil,
                 role: nil,
                 name: nil,
-        phone_number: nil,
-         guardian_id: nil)
+        phone_number: nil)
 
      User.create!(
           email: email,
@@ -25,7 +23,6 @@ module Mutations
            role: role,
            name: name,
    phone_number: phone_number,
-    guardian_id: guardian_id
      )
    end
   end
