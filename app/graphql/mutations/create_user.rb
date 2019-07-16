@@ -21,8 +21,8 @@ module Mutations
              password: nil,
                  name: nil,
          phone_number: nil,
-             street_1: nil,
-             street_2: nil,
+             street1: nil,
+             street2: nil,
                  city: nil,
                 state: nil,
                   zip: nil)
@@ -36,12 +36,12 @@ module Mutations
         phone_number: phone_number)
 
       address = user.addresses.create!(
-        street_1: street_1,
-        street_2: street_2,
+        street_1: street1,
+        street_2: street2,
             city: city,
            state: state,
              zip: zip)
-             
+
       return user
     end
   end
