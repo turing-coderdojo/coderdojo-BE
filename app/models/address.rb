@@ -4,5 +4,5 @@ class Address < ApplicationRecord
   validates_presence_of :state
   validates_presence_of :zip
 
-  belongs_to :user
+  belongs_to :addressable, polymorphic: true, optional: true
 end
