@@ -27,21 +27,22 @@ module Mutations
                 state: nil,
                   zip: nil)
 
-      address = Address.create!(
+      user = User.create!(
+        email: email,
+        username: username,
+        password: password,
+        role: 1,
+        name: name,
+        phone_number: phone_number)
+
+      address = user.addresses.create!(
         street_1: street_1,
         street_2: street_2,
             city: city,
            state: state,
              zip: zip)
-
-      User.create!(
-           email: email,
-        username: username,
-        password: password,
-            role: 1,
-            name: name,
-    phone_number: phone_number,
-      address_id: address.id)
+             
+      return user
     end
   end
 end
