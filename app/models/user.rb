@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates_presence_of :role
 
   has_many :students, class_name: "User",
-                          foreign_key: "guardian_id"
+                     foreign_key: "guardian_id"
 
-  belongs_to :guardian, class_name: "User"
+  belongs_to :guardian, optional: true, class_name: "User"
 end

@@ -6,7 +6,7 @@ module Mutations
     argument :role, Integer, required: true
     argument :name, String, required: false
     argument :phone_number, String, required: false
-    argument :guardian_id, Integer, required:false
+    argument :guardian_id, Integer, required: false
     # return type from the mutation
    type Types::UserType
 
