@@ -16,7 +16,7 @@ module Mutations
 
       User.create!(
            email: email,
-        nickname: nickname,
+        username: username,
         password: password,
             role: 1,
             name: name,

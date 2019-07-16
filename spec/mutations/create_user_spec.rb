@@ -8,12 +8,12 @@ class Mutations::CreateUserTest < ActiveSupport::TestCase
 
     it 'create a new user' do
       user = perform(
-        nickname: 'Duce',
+        username: 'Duce',
         password: 'password'
       )
 
       assert user.persisted?
-      assert_equal user.nickname, 'Duce'
+      assert_equal user.username, 'Duce'
       assert_equal user.password, 'password'
     end
   end
