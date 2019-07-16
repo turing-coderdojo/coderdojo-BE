@@ -13,7 +13,7 @@ module Mutations
          birthdate: nil)
 
       User.create!(
-        username: nickname,
+        username: username,
         password: password,
             role: 0,
             name: name,
