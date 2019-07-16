@@ -7,4 +7,6 @@ class User < ApplicationRecord
                      foreign_key: "guardian_id"
 
   belongs_to :guardian, optional: true, class_name: "User"
+
+  has_one :address
 end
