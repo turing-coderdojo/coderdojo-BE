@@ -6,7 +6,7 @@ class GraphqlController < ApplicationController
     operation_name = params[:operationName]
     context = {
       # Query context goes here, for example:
-      # current_user: current_user,
+      current_user: current_user,
     }
     result = CoderdojoBeSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
@@ -41,4 +41,5 @@ class GraphqlController < ApplicationController
 
     render json: { error: { message: e.message, backtrace: e.backtrace }, data: {} }, status: 500
   end
+
 end
