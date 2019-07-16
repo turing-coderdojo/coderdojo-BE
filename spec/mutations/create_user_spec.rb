@@ -8,13 +8,19 @@ class Mutations::CreateUserTest < ActiveSupport::TestCase
 
     it 'create a new user' do
       user = perform(
+        name: 'Matt W',
         username: 'Duce',
-        password: 'password'
+        password: 'password',
+        street_1: '123 main',
+        city: 'Denver',
+        state: 'CO',
+        zip: '80128'
       )
 
       assert user.persisted?
       assert_equal user.username, 'Duce'
       assert_equal user.password, 'password'
+      assert_equal user.addresses[0].city, 'Denver'
     end
   end
 end
