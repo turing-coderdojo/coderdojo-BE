@@ -4,7 +4,7 @@ module Types
     field :email, String, null: true
     field :nickname, String, null: false
     field :password, String, null: false
-    field :role, Integer, null: false
+    field :role, Integer, null: true
     field :name, String, null: true
     field :notes, String, null: true
     field :phone_number, String, null: true
