@@ -8,6 +8,7 @@ module Types
     field :name, String, null: true
     field :notes, String, null: true
     field :phone_number, String, null: true
+    field :guardian_id, Integer, null: true
     field :created_at, String, null: false
     field :updated_at, String, null: false
   end
