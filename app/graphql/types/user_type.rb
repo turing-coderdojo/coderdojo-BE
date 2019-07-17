@@ -2,7 +2,7 @@ module Types
   class UserType < BaseObject
     field :id, Integer, null: true
     field :email, String, null: true
-    field :nickname, String, null: false
+    field :username, String, null: false
     field :password, String, null: false
     field :role, Integer, null: true
     field :name, String, null: true
