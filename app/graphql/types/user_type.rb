@@ -10,6 +10,7 @@ module Types
     field :phone_number, String, null: true
     field :guardian_id, UserType, null: true, method: :guardian
     field :students, [UserType], null: true, method: :students
+    field :addresses, [AddressType], null: true, method: :addresses
     field :created_at, String, null: false
     field :updated_at, String, null: false
   end

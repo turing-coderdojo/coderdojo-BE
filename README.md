@@ -32,6 +32,7 @@ field :notes, String, null: true
 field :phone_number, String, null: true
 field :guardian_id, UserType, null: true, method: :guardian
 field :students, [UserType], null: true, method: :students
+field :addresses, [AddressType], null: true, method: :addresses
 field :created_at, String, null: false
 field :updated_at, String, null: false
 ```
@@ -44,7 +45,7 @@ Query Format:
 }
 ```
 
-If querying one of the fields that returns a UserType (guardian_id or students), then you must specify which properties of that user you wish to return.
+If querying one of the fields that returns a UserType (guardian_id or students) or AddressType, then you must specify which properties of that user or address you wish to return.
 
 Sample query getting all users with id, name, username, and role, as well as any guardian relationship, or an array of students if the user is a guardian for multiple students.
 ```
@@ -97,7 +98,7 @@ Sample return:
 
 If this query is sent with a token in the headers of the request `{'Authorization': token}` then the return is any requested information about the currently logged in user. This will likely mostly be for debugging purposes but may prove useful in building out views without storing all information about the user in memory.
 
-Sample query retrieving username and role for current user.
+Sample query retrieving username and role for current user. Addresses can be retrieved using this query.
 ```
 {
   me{
