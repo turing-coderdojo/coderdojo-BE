@@ -2,21 +2,21 @@
 
 This project is for the Turing mod 4 cross-pollination project. It is a new user registration, login, venue, event, and achievement portal for CoderDojo.
 
-#### Versions
+### Versions
 
 - ruby 2.4.1
 - rails 5.2.3
 
-#### Deployment
+### Deployment
 
 Project is deployed at https://pure-castle-14648.herokuapp.com This project has no views and the endpoint described below is the sole access point for this application.
 
 ### GraphQL
 This API runs on GraphQL. All queries and mutations (DB changes) are made via a POST to "/graphql".
 
-#### Available Queries
+## Available Queries
 
-##### allUsers:
+### allUsers:
 
 This allows the client to retrieve all users from the db and filter their return based on what information is needed/desired.
 
@@ -93,7 +93,7 @@ Sample return:
             }
 ```
 
-##### Me
+### Me
 
 If this query is sent with a token in the headers of the request `{'Authorization': token}` then the return is any requested information about the currently logged in user. This will likely mostly be for debugging purposes but may prove useful in building out views without storing all information about the user in memory.
 
@@ -119,9 +119,9 @@ Sample return:
 }
 ```
 
-#### Available Mutations
+## Available Mutations
 
-##### createUser
+### createUser
 This allows the client to create a guardian user and store it to the db and filter their return based on what information is needed/desired. This also creates an entry in the addresses table linked to the user.
 
 Fields: Note that the only field not required is `street_2`.
@@ -185,7 +185,7 @@ Sample return:
 }
 ```
 
-##### createStudent
+### createStudent
 This allows the client to create a student user and store it to the db and filter their return based on what information is needed/desired.
 
 If token is passed to this mutation in the headers of the request, student is created linked to the guardian registering them.
@@ -230,7 +230,7 @@ Sample return:
 }
 ```
 
-##### signIn
+### signIn
 This allows a user to sign in with their username and password. This mutation generates and returns a token to be sent in request headers for any query or mutation where authorization is required.
 
 Fields/Args:
