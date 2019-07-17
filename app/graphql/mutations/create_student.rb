@@ -1,28 +1,24 @@
 module Mutations
   class CreateStudent < Mutations::BaseMutation
-    argument :nickname, String, required: true
+    argument :username, String, required: true
     argument :password, String, required: true
-    argument :role, Integer, required: true
-    argument :name, String, required: false
+    argument :name, String, required: true
+    argument :birthdate, String, required: true
     # return type from the mutation
     type Types::UserType
 
-    def resolve(nickname: nil,
+    def resolve(username: nil,
             password: nil,
-                role: nil,
                 name: nil,
-         guardian_id: nil)
+         birthdate: nil)
 
-      if context[:current_user].nil?
-        raise GraphQL::ExecutionError,
-        "You need to authenticate to perform this action"
-      end
 
       User.create!(
-        nickname: nickname,
+        username: username,
         password: password,
-            role: role,
+            role: 0,
             name: name,
+       birthdate: birthdate,
      guardian_id: context[:current_user][:id])
    end
   end
