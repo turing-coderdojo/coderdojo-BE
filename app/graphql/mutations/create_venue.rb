@@ -42,7 +42,7 @@ module Mutations
                zip: zip)
         return venue
       else
-        {error: "Not Authorized to create venue!"}
+        GraphQL::ExecutionError.new("Must be a superuser to create venue!")
       end
     end
   end
