@@ -12,7 +12,7 @@ module Mutations
                 name: nil,
          birthdate: nil)
 
-      if context[:current_user]
+      if context[:current_user] && (context[:current_user][:role] >= 1)
         User.create!(
           username: username,
           password: password,
@@ -20,6 +20,8 @@ module Mutations
               name: name,
          birthdate: birthdate,
        guardian_id: context[:current_user][:id])
+      elsif context[:current_user]
+        GraphQL::ExecutionError.new("Students cannot create students!")
       else
        User.create!(
          username: username,
