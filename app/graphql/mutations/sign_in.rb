@@ -7,7 +7,7 @@ module Mutations
     field :user, Types::UserType, null: true
 
     def resolve(username: nil, password: nil)
-      user = User.find_by!(username: username)
+      user = User.find_by(username: username)
       return GraphQL::ExecutionError.new("Invalid Username!") unless user
       return GraphQL::ExecutionError.new("Passwords don't match!") unless user.password == password
 
