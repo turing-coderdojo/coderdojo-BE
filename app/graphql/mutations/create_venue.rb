@@ -12,13 +12,27 @@ module Mutations
                email: nil,
                notes: nil,
              web_url: nil,
-           photo_url: nil)
+           photo_url: nil,
+             street1: nil,
+             street2: nil,
+                city: nil,
+               state: nil,
+                 zip: nil)
 
-      Venue.create(name: name,
+      venue = Venue.create(name: name,
                   email: email,
                   notes: notes,
                 web_url: web_url,
               photo_url: photo_url)
+
+      venue.addresses.create(
+        street_1: street1,
+        street_2: street2,
+            city: city,
+           state: state,
+             zip: zip)
+
+      return venue
     end
   end
 end
