@@ -6,5 +6,6 @@ module Types
     field :email, String, null: true
     field :web_url, String, null: true
     field :photo_url, String, null: true
+    field :addresses, [AddressType], null: true, method: :addresses
   end
 end
