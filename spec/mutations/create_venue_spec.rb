@@ -16,7 +16,7 @@ class Mutations::CreateUserTest < ActiveSupport::TestCase
       )
 
       assert venue.persisted?
-      assert_equal venue.name, 'Duce'
+      assert_equal venue.name, 'Venue One'
       assert_equal venue.addresses[0].city, 'Denver'
     end
   end
