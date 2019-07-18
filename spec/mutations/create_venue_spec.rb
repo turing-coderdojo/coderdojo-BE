@@ -34,7 +34,7 @@ class Mutations::CreateUserTest < ActiveSupport::TestCase
         zip: '80128'
       )
 
-      assert_equal venue, {:error=> "Not Authorized to create venue!"}
+      assert_equal venue.class, GraphQL::ExecutionError
     end
   end
 end
