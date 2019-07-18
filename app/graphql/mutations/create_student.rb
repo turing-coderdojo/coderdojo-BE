@@ -12,14 +12,22 @@ module Mutations
                 name: nil,
          birthdate: nil)
 
-
-      User.create!(
-        username: username,
-        password: password,
-            role: 0,
-            name: name,
-       birthdate: birthdate,
-     guardian_id: context[:current_user][:id])
+      if context[:current_user]
+        User.create!(
+          username: username,
+          password: password,
+              role: 0,
+              name: name,
+         birthdate: birthdate,
+       guardian_id: context[:current_user][:id])
+      else
+       User.create!(
+         username: username,
+         password: password,
+             role: 0,
+             name: name,
+        birthdate: birthdate)
+      end
    end
   end
 end
