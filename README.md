@@ -120,6 +120,30 @@ Sample return:
 }
 ```
 
+### allVenues
+  This allows the client to retrieve all venues from the db and filter their return based on what information is needed/desired. For more detail, follow the allUsers example above.
+
+  Sample request:
+  ```
+{
+  allVenues{
+    name
+  }
+}
+  ```
+  Sample return:
+  ```
+{
+  "data": {
+    "allVenues": [
+      {
+        "name": "Venue One"
+      }
+    ]
+  }
+}
+  ```
+
 ## Available Mutations
 
 ### createUser
