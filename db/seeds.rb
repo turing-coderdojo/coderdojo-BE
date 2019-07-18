@@ -13,7 +13,9 @@ student_3 = User.create(name: "Student Three", username: "student3", email: "exa
 student_4 = User.create(name: "Student Four", username: "student4", email: "example4@student4.com", password: "password", role: 0, birthdate: "Jan 1, 2008", guardian_id: admin_1.id)
 student_5 = User.create(name: "Student Five", username: "student5", email: "example5@student5.com", password: "password", role: 0, birthdate: "Jan 1, 2009", guardian_id: admin_1.id)
 
+venue_1 = Venue.create(name: "Venue One", notes: "Here be Dragons", email: "example@venue.com", web_url: "www.venueone.com")
 
 user_1.addresses.create(street_1: "123 Main St.", street_2: "Apt 345", city: "Denver", state: "CO", zip: "80128")
 admin_1.addresses.create(street_1: "234 Main St.", street_2: "Apt 456", city: "Denver", state: "CO", zip: "80128")
 superuser_1.addresses.create(street_1: "456 Main St.", street_2: "Apt 567", city: "Denver", state: "CO", zip: "80128")
+venue_1.addresses.create(street_1: "567 Main St.", street_2: "Apt 678", city: "Denver", state: "CO", zip: "80128")

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_16_214438) do
+ActiveRecord::Schema.define(version: 2019_07_18_034452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 2019_07_16_214438) do
     t.bigint "guardian_id"
     t.string "birthdate"
     t.index ["guardian_id"], name: "index_users_on_guardian_id"
+  end
+
+  create_table "venues", force: :cascade do |t|
+    t.text "notes"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email"
+    t.string "web_url"
+    t.string "photo_url"
   end
 
 end
