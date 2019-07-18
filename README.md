@@ -255,6 +255,61 @@ Sample return:
 }
 ```
 
+### createVenue
+This allows a superuser to create a venue.
+
+Token required. Operation will return an error message if no token or if current user is not a superuser.
+
+Args:
+```
+#Venue args
+argument :name, String, required: true
+argument :email, String, required: false
+argument :notes, String, required: false
+argument :web_url, String, required: false
+argument :photo_url, String, required: false
+
+#Address args
+argument :street_1, String, required: true
+argument :street_2, String, required: false
+argument :city, String, required: true
+argument :state, String, required: true
+argument :zip, String, required: true
+```
+
+Sample request:
+```
+mutation createVenue(
+    $name: String!,
+    $street1: String!,
+    $street2: String,
+    $city: String!,
+    $state: String!,
+    $zip: String!
+    ) {
+    createVenue(
+    name: $name,
+    street1: $street1,
+    street2: $street2,
+    city: $city,
+    state: $state,
+    zip: $zip
+  ) {
+    id
+  }
+}
+```
+Sample Return:
+```
+{
+    "data": {
+        "createVenue": {
+            "id": 3
+        }
+    }
+}
+```
+
 ### signIn
 This allows a user to sign in with their username and password. This mutation generates and returns a token to be sent in request headers for any query or mutation where authorization is required.
 
