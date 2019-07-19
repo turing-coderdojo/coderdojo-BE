@@ -4,6 +4,8 @@
 
 superuser_1 = User.create(name: "Superuser One", username: "superuser1", email: "example@superuser1.com", password: "password", role: 3, phone_number: "5555555553")
 admin_1 = User.create(name: "Admin One", username: "admin1", email: "example@admin1.com", password: "password", role: 2, phone_number: "5555555553")
+admin_2 = User.create(name: "Admin Two", username: "admin2", email: "example@admin2.com", password: "password", role: 2, phone_number: "5555555515")
+admin_3 = User.create(name: "Admin Three", username: "admin3", email: "example@admin3.com", password: "password", role: 2, phone_number: "5555555525")
 user_1 = User.create(name: "Matt Weiss", username: "Duce", email: "weiss.matt@outlook.com", password: "password", role: 1, phone_number: "5555555555")
 
 student_1 = User.create(name: "Student One", username: "student1", email: "example@student.com", password: "password", role: 0, birthdate: "Jan 1, 2005", guardian_id: user_1.id)
@@ -14,8 +16,15 @@ student_4 = User.create(name: "Student Four", username: "student4", email: "exam
 student_5 = User.create(name: "Student Five", username: "student5", email: "example5@student5.com", password: "password", role: 0, birthdate: "Jan 1, 2009", guardian_id: admin_1.id)
 
 venue_1 = Venue.create(name: "Venue One", notes: "Here be Dragons", email: "example@venue.com", web_url: "www.venueone.com")
+venue_2 = Venue.create(name: "Venue Two", email: "example@venue2.com", web_url: "www.venuetwo.com")
+venue_3 = Venue.create(name: "Venue Three", notes: "This basement has no windows", email: "example@venue3.com", web_url: "www.venuethree.com")
 
 user_1.addresses.create(street_1: "123 Main St.", street_2: "Apt 345", city: "Denver", state: "CO", zip: "80128")
 admin_1.addresses.create(street_1: "234 Main St.", street_2: "Apt 456", city: "Denver", state: "CO", zip: "80128")
 superuser_1.addresses.create(street_1: "456 Main St.", street_2: "Apt 567", city: "Denver", state: "CO", zip: "80128")
 venue_1.addresses.create(street_1: "567 Main St.", street_2: "Apt 678", city: "Denver", state: "CO", zip: "80128")
+
+VenueAdmin.create(user_id: admin_1.id, venue_id: venue_1.id)
+VenueAdmin.create(user_id: admin_2.id, venue_id: venue_2.id)
+VenueAdmin.create(user_id: admin_2.id, venue_id: venue_3.id)
+VenueAdmin.create(user_id: admin_3.id, venue_id: venue_3.id)
