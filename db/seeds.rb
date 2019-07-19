@@ -3,9 +3,9 @@
 
 
 superuser_1 = User.create(name: "Superuser One", username: "superuser1", email: "example@superuser1.com", password: "password", role: 3, phone_number: "5555555553")
-admin_1 = User.create(name: "Admin One", username: "admin1", email: "example@admin1.com", password: "password", role: 2, phone_number: "5555555553")
-admin_2 = User.create(name: "Admin Two", username: "admin2", email: "example@admin2.com", password: "password", role: 2, phone_number: "5555555515")
-admin_3 = User.create(name: "Admin Three", username: "admin3", email: "example@admin3.com", password: "password", role: 2, phone_number: "5555555525")
+admin_1 = User.create(name: "Admin One", username: "admin1", email: "example@admin1.com", password: "password", role: 1, phone_number: "5555555553")
+admin_2 = User.create(name: "Admin Two", username: "admin2", email: "example@admin2.com", password: "password", role: 1, phone_number: "5555555515")
+admin_3 = User.create(name: "Admin Three", username: "admin3", email: "example@admin3.com", password: "password", role: 1, phone_number: "5555555525")
 user_1 = User.create(name: "Matt Weiss", username: "Duce", email: "weiss.matt@outlook.com", password: "password", role: 1, phone_number: "5555555555")
 
 student_1 = User.create(name: "Student One", username: "student1", email: "example@student.com", password: "password", role: 0, birthdate: "Jan 1, 2005", guardian_id: user_1.id)
