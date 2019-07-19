@@ -17,9 +17,5 @@ module Mutations
         GraphQL::ExecutionError.new("Not authorized to promote users!")
       end
     end
-
-    def is_venue_admin?(venue_id)
-      VenueAdmin.find_by(user_id: current_user[:id], venue_id: venue_id)
-    end
   end
 end
