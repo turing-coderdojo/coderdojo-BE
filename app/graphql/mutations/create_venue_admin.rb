@@ -10,7 +10,7 @@ module Mutations
 
       current_user = context[:current_user]
 
-      if (current_user && (current_user[:role] == 2) && current_user.is_venue_admin?(venue_id)) ||
+      if (current_user && current_user.is_venue_admin?(venue_id)) ||
         (current_user && (current_user[:role] == 3))
         VenueAdmin.create(user_id: user_id, venue_id: venue_id)
       else
