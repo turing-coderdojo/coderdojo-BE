@@ -9,5 +9,6 @@ class User < ApplicationRecord
   belongs_to :guardian, optional: true, class_name: "User"
 
   has_many :addresses, :as => :addressable
+  has_many :venue_admins
   has_many :venues, through: :venue_admins
 end
