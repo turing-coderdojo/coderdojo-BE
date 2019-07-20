@@ -123,25 +123,33 @@ Sample return:
 ### allVenues
   This allows the client to retrieve all venues from the db and filter their return based on what information is needed/desired. For more detail, follow the allUsers example above.
 
+  This query also has functionality to filter Venues by city.
+
   Sample request:
   ```
-{
-  allVenues{
-    name
+  {
+    allVenues(city: "Denver"){
+      name
+    }
   }
-}
   ```
   Sample return:
   ```
-{
-  "data": {
-    "allVenues": [
-      {
-        "name": "Venue One"
-      }
-    ]
+  {
+    "data": {
+      "allVenues": [
+        {
+          "name": "Venue One"
+        },
+        {
+          "name": "Venue Two"
+        },
+        {
+          "name": "Venue Three"
+        }
+      ]
+    }
   }
-}
   ```
 
 ### allVenueAdmins
