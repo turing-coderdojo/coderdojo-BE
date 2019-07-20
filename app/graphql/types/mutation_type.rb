@@ -6,5 +6,6 @@ module Types
     field :create_student, mutation: Mutations::CreateStudent
     field :create_venue, mutation: Mutations::CreateVenue
     field :create_venue_admin, mutation: Mutations::CreateVenueAdmin
+    field :create_event, mutation: Mutations::CreateEvent
   end
 end
