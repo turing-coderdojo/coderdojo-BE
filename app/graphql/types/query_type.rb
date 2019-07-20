@@ -15,6 +15,11 @@ module Types
       argument :venue_id, Integer, required: false
     end
 
+    field :attendance, [UserEventType], null:true do
+      argument :user_id, Integer, required: false
+      argument :event_id, Integer, required: false
+    end
+
 
     def me
       context[:current_user]
@@ -48,5 +53,16 @@ module Types
       end
     end
 
+    def attendance(user_id: nil, event_id: nil)
+      if user_id && event_id
+        UserEvent.where(user_id: user_id, event_id: event_id)
+      elsif user_id
+        UserEvent.where(user_id: user_id)
+      elsif event_id
+        UserEvent.where(event_id: event_id)
+      else
+        UserEvent.all
+      end
+    end
   end
 end

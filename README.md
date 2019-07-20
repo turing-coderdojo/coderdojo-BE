@@ -270,6 +270,46 @@ Return:
 
 To get all events, simply make this request without arguments.
 
+### Attendance
+This query is similar to VenueAdmins in that you can pass a variety of arguments to retrieve the desired data set.
+- Querying for both a userId and EventId will tell us if a particular student was at a particular event.
+- Querying only the eventId will show all students that attended the event.
+- Querying only a userId will show us all events that a student has attended
+
+Sample Request:
+```
+{
+  attendance(userId:6){
+    event{
+      name
+    }
+  }
+}
+```
+Sample Response:
+```
+{
+  "data": {
+    "attendance": [
+      {
+        "event": {
+          "name": "Test Event 1"
+        }
+      },
+      {
+        "event": {
+          "name": "Test Event 2"
+        }
+      },
+      {
+        "event": {
+          "name": "Test Event 3"
+        }
+      }
+    ]
+  }
+}
+```
 ## Available Mutations
 
 ### createUser
@@ -525,6 +565,20 @@ mutation{
     startTime: "2019-07-21 08:30:00",
     endTime: "2019-07-21 10:30:00"){
    id
+  }
+}
+```
+
+### logAttendance
+This allows a student user to have their attendance logged when request is made with a valid event_id and event_code.  
+
+Token required. will error if current user role is anything other than student or if student has already had their attendance counted for this event.
+
+Sample Request:
+```
+mutation{
+  logAttendance(eventId: 4, eventCode:"8783ba89"){
+    id
   }
 }
 ```

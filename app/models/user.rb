@@ -9,8 +9,12 @@ class User < ApplicationRecord
   belongs_to :guardian, optional: true, class_name: "User"
 
   has_many :addresses, :as => :addressable
+
   has_many :venue_admins
   has_many :venues, through: :venue_admins
+
+  has_many :user_events
+  has_many :events, through: :user_events
 
   def is_venue_admin?(venue_id)
     VenueAdmin.find_by(user_id: id, venue_id: venue_id)
