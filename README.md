@@ -144,6 +144,132 @@ Sample return:
 }
   ```
 
+### allVenueAdmins
+This allows the client to get all VenueAdmins, but additionally allows for arguments to be passed in the query. We can query for all by using no arguments, or we can query by venue_id or by user_id. This will let us show all admins for a particular venue, as well as all venues that a particular user is admin of. By querying for both a user_id and a venue_id, we can determine if a user is an admin of that venue.
+
+Sample requests/returns:
+This query returns all admins for Venue 3
+```
+{
+  allVenueAdmins(venueId: 3){
+    user{
+      name
+    }
+  }
+}
+```
+Return:
+```
+{
+  "data": {
+    "allVenueAdmins": [
+      {
+        "user": {
+          "name": "Admin Two"
+        }
+      },
+      {
+        "user": {
+          "name": "Admin Three"
+        }
+      }
+    ]
+  }
+}
+```
+This query returns all Venues for that User 3 is admin of
+```
+{
+  allVenueAdmins(userId: 3){
+    venue{
+      name
+    }
+  }
+}
+```
+Return:
+```
+{
+  "data": {
+    "allVenueAdmins": [
+      {
+        "venue": {
+          "name": "Venue Two"
+        }
+      },
+      {
+        "venue": {
+          "name": "Venue Three"
+        }
+      }
+    ]
+  }
+}
+```
+This query checks whether User 2 is an admin of Venue 1
+```
+{
+  allVenueAdmins(userId: 2, venueId: 1){
+    id
+  }
+}
+```
+Return:
+```
+{
+  "data": {
+    "allVenueAdmins": [
+      {
+        "id": 1
+      }
+    ]
+  }
+}
+```
+This is what a return will look like if the user and venue do not return a VenueAdmin (this user is not an admin for this venue)
+```
+{
+  "data": {
+    "allVenueAdmins": []
+  }
+}
+```
+### allEvents
+This allows the client to get all Events, but additionally allows for arguments to be passed in the query. We can query for all by using no arguments, or we can query by venue_id.
+
+Sample Request:
+```
+{
+  allEvents(venueId: 2){
+    id
+    name
+  }
+}
+```
+Return:
+```
+{
+  "data": {
+    "allEvents": [
+      {
+        "id": 1,
+        "name": "Test Event"
+      },
+      {
+        "id": 7,
+        "name": "New Event"
+      },
+      {
+        "id": 8,
+        "name": "New Event"
+      }
+    ]
+  }
+}
+```
+
+To get all events, simply make this request without arguments.
+
 ## Available Mutations
 
 ### createUser
@@ -345,5 +471,60 @@ Sample return:
             "token": "RHVjZQ==\n"
         }
     }
+}
+```
+
+### createVenueAdmin
+This allows a superuser or current venue admin to create a VenueAdmin.
+
+Token required. Operation will return an error message if no token or if current user is not a superuser or VenueAdmin.
+
+Must pass in id of user to be promoted to admin and id of venue.
+
+Sample Request:
+```
+mutation{
+  createVenueAdmin(
+    userId: "5",
+    venueId: "2"
+  ){
+    id
+  }
+}
+```
+
+### createEvent
+This allows a superuser or current venue admin to create an Event.
+
+Token required. Operation will return an error message if no token or if current user is not a superuser or VenueAdmin.
+
+Note that the address fields are optional.
+
+Fields/Args:
+```
+#Event args
+argument :name, String, required: true
+argument :notes, String, required: false
+argument :start_time, String, required: true
+argument :end_time, String, required: true
+argument :venue_id, Integer, required: true
+#Address args
+argument :street_1, String, required: false
+argument :street_2, String, required: false
+argument :city, String, required: false
+argument :state, String, required: false
+argument :zip, String, required: false
+```
+
+Sample Request:
+```
+mutation{
+  createEvent(
+    name: "New Event",
+    venueId: 2,
+    startTime: "2019-07-21 08:30:00",
+    endTime: "2019-07-21 10:30:00"){
+   id
+  }
 }
 ```
