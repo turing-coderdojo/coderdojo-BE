@@ -4,7 +4,10 @@ module Types
     # They will be entry points for queries on your schema.
     field :all_users, [UserType], null: true
     field :me, UserType, null: true
-    field :all_venues, [VenueType], null:true
+
+    field :all_venues, [VenueType], null:true do
+      argument :city, String, required: false
+    end
 
     field :all_events, [EventType], null: true do
       argument :venue_id, Integer, required: false
@@ -29,8 +32,12 @@ module Types
       User.all
     end
 
-    def all_venues
-      Venue.all
+    def all_venues(city: nil)
+      if city
+        Venue.joins(:addresses).where(addresses: {city: city})
+      else
+        Venue.all
+      end
     end
 
     def all_venue_admins(user_id: nil, venue_id: nil)
