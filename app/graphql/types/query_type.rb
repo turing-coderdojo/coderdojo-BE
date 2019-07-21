@@ -6,6 +6,7 @@ module Types
     field :me, UserType, null: true
 
     field :all_venues, [VenueType], null:true do
+      argument :id, Integer, required: false
       argument :city, String, required: false
     end
 
@@ -40,9 +41,11 @@ module Types
       User.all
     end
 
-    def all_venues(city: nil)
+    def all_venues(city: nil, id: nil)
       if city
         Venue.joins(:addresses).where(addresses: {city: city})
+      elsif id
+        Venue.where(id: id)
       else
         Venue.all
       end
