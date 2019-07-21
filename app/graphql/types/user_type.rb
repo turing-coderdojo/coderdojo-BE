@@ -12,6 +12,7 @@ module Types
     field :students, [UserType], null: true, method: :students
     field :addresses, [AddressType], null: true, method: :addresses
     field :events_attended, [EventType], null: true, method: :events
+    field :venues, [VenueType], null: true, method: :venues
     field :created_at, String, null: false
     field :updated_at, String, null: false
   end
