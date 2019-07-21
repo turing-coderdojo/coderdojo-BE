@@ -7,5 +7,6 @@ module Types
     field :web_url, String, null: true
     field :photo_url, String, null: true
     field :addresses, [AddressType], null: true, method: :addresses
+    field :events, [EventType], null: true, method: :events
   end
 end
