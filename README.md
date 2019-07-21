@@ -33,6 +33,8 @@ field :phone_number, String, null: true
 field :guardian_id, UserType, null: true, method: :guardian
 field :students, [UserType], null: true, method: :students
 field :addresses, [AddressType], null: true, method: :addresses
+field :events_attended, [EventType], null: true, method: :events
+field :venues, [VenueType], null: true, method: :venues
 field :created_at, String, null: false
 field :updated_at, String, null: false
 ```
@@ -96,7 +98,7 @@ Sample return:
 
 ### Me
 
-If this query is sent with a token in the headers of the request `{'Authorization': token}` then the return is any requested information about the currently logged in user. This will likely mostly be for debugging purposes but may prove useful in building out views without storing all information about the user in memory.
+If this query is sent with a token in the headers of the request `{'Authorization': token}` then the return is any requested information about the currently logged in user. Since this return is a UserType, we can query any methods from the above allUsers query.
 
 Sample query retrieving username and role for current user. Addresses can be retrieved using this query.
 ```
@@ -313,6 +315,39 @@ Sample Response:
         "event": {
           "name": "Test Event 3"
         }
+      }
+    ]
+  }
+}
+```
+### pastEvents and futureEvents
+These 2 queries allow us to query events for a particular venue compared to `Time.now`. Both queries return 3 results, pastEvents id the most recent 3 events, and future events are the nearest 3 upcoming events.
+
+Sample Request:
+```
+{
+  futureEvents(venueId: 1){
+    id
+    startTime
+  }
+}
+```
+Sample Response:
+```
+{
+  "data": {
+    "futureEvents": [
+      {
+        "id": 2,
+        "startTime": "2019-08-21 17:00:00 UTC"
+      },
+      {
+        "id": 3,
+        "startTime": "2019-08-22 17:00:00 UTC"
+      },
+      {
+        "id": 4,
+        "startTime": "2019-08-23 19:00:00 UTC"
       }
     ]
   }

@@ -23,6 +23,14 @@ module Types
       argument :event_id, Integer, required: false
     end
 
+    field :past_events, [EventType], null: true do
+      argument :venue_id, Integer, required: true
+    end
+
+    field :future_events, [EventType], null: true do
+      argument :venue_id, Integer, required: true
+    end
+
 
     def me
       context[:current_user]
@@ -70,6 +78,16 @@ module Types
       else
         UserEvent.all
       end
+    end
+
+    def past_events(venue_id: nil)
+      time = Time.now.to_formatted_s(:db)
+      Event.where(venue_id: venue_id).where("start_time < ?", time).limit(3).order(start_time: :asc)
+    end
+
+    def future_events(venue_id: nil)
+      time = Time.now.to_formatted_s(:db)
+      Event.where(venue_id: venue_id).where("start_time > ?", time).limit(3)
     end
   end
 end

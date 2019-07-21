@@ -3,9 +3,9 @@
 
 
 superuser_1 = User.create(name: "Superuser One", username: "superuser1", email: "example@superuser1.com", password: "password", role: 3, phone_number: "5555555553")
-admin_1 = User.create(name: "Admin One", username: "admin1", email: "example@admin1.com", password: "password", role: 1, phone_number: "5555555553")
-admin_2 = User.create(name: "Admin Two", username: "admin2", email: "example@admin2.com", password: "password", role: 1, phone_number: "5555555515")
-admin_3 = User.create(name: "Admin Three", username: "admin3", email: "example@admin3.com", password: "password", role: 1, phone_number: "5555555525")
+admin_1 = User.create(name: "Admin One", username: "admin1", email: "example@admin1.com", password: "password", role: 2, phone_number: "5555555553")
+admin_2 = User.create(name: "Admin Two", username: "admin2", email: "example@admin2.com", password: "password", role: 2, phone_number: "5555555515")
+admin_3 = User.create(name: "Admin Three", username: "admin3", email: "example@admin3.com", password: "password", role: 2, phone_number: "5555555525")
 user_1 = User.create(name: "Matt Weiss", username: "Duce", email: "weiss.matt@outlook.com", password: "password", role: 1, phone_number: "5555555555")
 
 student_1 = User.create(name: "Student One", username: "student1", email: "example@student.com", password: "password", role: 0, birthdate: "Jan 1, 2005", guardian_id: user_1.id)
@@ -31,12 +31,13 @@ VenueAdmin.create(user_id: admin_2.id, venue_id: venue_2.id)
 VenueAdmin.create(user_id: admin_2.id, venue_id: venue_3.id)
 VenueAdmin.create(user_id: admin_3.id, venue_id: venue_3.id)
 
-event_1 = venue_2.events.create(name: "Test Event 1", start_time: '2019-07-19 17:00:00', end_time: '2019-07-19 18:00:00', notes: "testing notes", event_code: SecureRandom.hex(4))
-event_2 = venue_1.events.create(name: "Test Event 2", start_time: '2019-07-20 17:00:00', end_time: '2019-07-20 18:00:00', notes: "testing notes", event_code: SecureRandom.hex(4))
-event_3 = venue_1.events.create(name: "Test Event 3", start_time: '2019-07-20 19:00:00', end_time: '2019-07-20 20:00:00', notes: "testing notes", event_code: SecureRandom.hex(4))
-event_4 = venue_1.events.create(name: "Test Event 4", start_time: '2019-07-18 19:00:00', end_time: '2019-07-18 20:00:00', notes: "testing notes", event_code: SecureRandom.hex(4))
-event_5 = venue_1.events.create(name: "Test Event 5", start_time: '2019-07-17 19:00:00', end_time: '2019-07-17 20:00:00', notes: "testing notes", event_code: SecureRandom.hex(4))
-event_6 = venue_1.events.create(name: "Test Event 6", start_time: '2019-07-16 19:00:00', end_time: '2019-07-16 20:00:00', notes: "testing notes", event_code: SecureRandom.hex(4))
+event_1 = venue_2.events.create(name: "Test Event 1", start_time: '2019-08-21 17:00:00', end_time: '2019-08-19 18:00:00', notes: "testing notes", event_code: SecureRandom.hex(4))
+event_2 = venue_1.events.create(name: "Test Event 2", start_time: '2019-08-21 17:00:00', end_time: '2019-08-21 18:00:00', notes: "testing notes", event_code: SecureRandom.hex(4))
+event_3 = venue_1.events.create(name: "Test Event 3", start_time: '2019-08-22 17:00:00', end_time: '2019-08-22 18:00:00', notes: "testing notes", event_code: SecureRandom.hex(4))
+event_4 = venue_1.events.create(name: "Test Event 4", start_time: '2019-08-23 19:00:00', end_time: '2019-08-23 20:00:00', notes: "testing notes", event_code: SecureRandom.hex(4))
+event_5 = venue_1.events.create(name: "Test Event 5", start_time: '2019-07-18 19:00:00', end_time: '2019-07-18 20:00:00', notes: "testing notes", event_code: SecureRandom.hex(4))
+event_6 = venue_1.events.create(name: "Test Event 6", start_time: '2019-07-17 19:00:00', end_time: '2019-07-17 20:00:00', notes: "testing notes", event_code: SecureRandom.hex(4))
+event_7 = venue_1.events.create(name: "Test Event 7", start_time: '2019-07-16 19:00:00', end_time: '2019-07-16 20:00:00', notes: "testing notes", event_code: SecureRandom.hex(4))
 
 event_6.addresses.create(street_1: "567 Different St.", street_2: "Apt 678", city: "Denver", state: "CO", zip: "80128")
 
