@@ -12,7 +12,11 @@ module Mutations
                 name: nil,
          birthdate: nil)
 
-      if context[:current_user] && (context[:current_user][:role] >= 1)
+      existing_user = User.find_by(username: username)
+
+      if existing_user
+        GraphQL::ExecutionError.new("User already exists!")
+      elsif context[:current_user] && (context[:current_user][:role] >= 1)
         User.create!(
           username: username,
           password: password,
