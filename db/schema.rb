@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_22_044255) do
+ActiveRecord::Schema.define(version: 2019_07_22_142818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "achievement_goals", force: :cascade do |t|
+    t.bigint "achievement_id"
+    t.bigint "goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["achievement_id"], name: "index_achievement_goals_on_achievement_id"
+    t.index ["goal_id"], name: "index_achievement_goals_on_goal_id"
+  end
 
   create_table "achievements", force: :cascade do |t|
     t.bigint "venue_id"
@@ -100,6 +109,8 @@ ActiveRecord::Schema.define(version: 2019_07_22_044255) do
     t.string "photo_url"
   end
 
+  add_foreign_key "achievement_goals", "achievements"
+  add_foreign_key "achievement_goals", "goals"
   add_foreign_key "achievements", "venues"
   add_foreign_key "events", "venues"
   add_foreign_key "user_events", "events"
