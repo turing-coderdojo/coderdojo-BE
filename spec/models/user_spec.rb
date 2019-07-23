@@ -13,5 +13,6 @@ describe User, type: :model do
     it{should have_many(:venues)}
     it{should have_many(:user_events)}
     it{should have_many(:events)}
+    it{should have_many(:student_achv_goals)}
   end
 end

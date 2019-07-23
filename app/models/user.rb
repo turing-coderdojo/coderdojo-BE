@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_many :user_events
   has_many :events, through: :user_events
 
+  has_many :student_achv_goals
+
   def is_venue_admin?(venue_id)
     VenueAdmin.find_by(user_id: id, venue_id: venue_id)
   end
