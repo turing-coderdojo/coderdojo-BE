@@ -1,7 +1,7 @@
 module Mutations
   class UpdateEvent < Mutations::BaseMutation
     #Event args
-    argument :id, String, required: true
+    argument :id, Integer, required: true
     argument :name, String, required: false
     argument :notes, String, required: false
     argument :start_time, String, required: false
@@ -29,23 +29,31 @@ module Mutations
                zip: nil)
 
       current_user = context[:current_user]
+      event_params = {name: name,
+                     notes: notes,
+                start_time: start_time,
+                  end_time: end_time,
+                  venue_id: venue_id}
+
+      if city
+        sanitized_city = city.downcase
+      end
+
+      address_params = {street_1: street1,
+                        street_2: street2,
+                            city: sanitized_city,
+                           state: state,
+                             zip: zip}
 
       event = Event.find(id)
 
       if (current_user && current_user.is_venue_admin?(venue_id)) ||
         (current_user && (current_user[:role] == 3))
-        event.update(name: name,
-                            notes: notes,
-                       start_time: start_time,
-                         end_time: end_time,
-                         venue_id: venue_id)
-        if street1
-          event.addresses.update(
-            street_1: street1,
-            street_2: street2,
-                city: city.downcase,
-               state: state,
-                 zip: zip)
+        event.update(event_params)
+        if event.addresses[0]
+          event.addresses[0].update(address_params)
+        else
+          event.addresses.create(address_params)
         end
         return event
       else
