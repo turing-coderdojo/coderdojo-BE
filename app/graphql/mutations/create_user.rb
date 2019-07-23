@@ -43,7 +43,7 @@ module Mutations
         address = user.addresses.create!(
           street_1: street1,
           street_2: street2,
-              city: city,
+              city: city.downcase,
              state: state,
                zip: zip)
 

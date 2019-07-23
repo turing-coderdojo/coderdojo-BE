@@ -22,7 +22,7 @@ class Mutations::CreateUserTest < ActiveSupport::TestCase
 
       assert venue.persisted?
       assert_equal venue.name, 'Venue One'
-      assert_equal venue.addresses[0].city, 'Denver'
+      assert_equal venue.addresses[0].city, 'denver'
     end
 
     it 'throws error when current user is not superuser' do
