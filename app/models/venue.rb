@@ -4,4 +4,5 @@ class Venue < ApplicationRecord
   has_many :venue_admins
   has_many :users, through: :venue_admins
   has_many :events
+  has_many :achievements
 end

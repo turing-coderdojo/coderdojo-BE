@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_20_203732) do
+ActiveRecord::Schema.define(version: 2019_07_22_142818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "achievement_goals", force: :cascade do |t|
+    t.bigint "achievement_id"
+    t.bigint "goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["achievement_id"], name: "index_achievement_goals_on_achievement_id"
+    t.index ["goal_id"], name: "index_achievement_goals_on_goal_id"
+  end
+
+  create_table "achievements", force: :cascade do |t|
+    t.bigint "venue_id"
+    t.string "name"
+    t.string "badge_url"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["venue_id"], name: "index_achievements_on_venue_id"
+  end
 
   create_table "addresses", force: :cascade do |t|
     t.string "street_1"
@@ -38,6 +57,15 @@ ActiveRecord::Schema.define(version: 2019_07_20_203732) do
     t.datetime "updated_at", null: false
     t.string "event_code"
     t.index ["venue_id"], name: "index_events_on_venue_id"
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "category"
+    t.string "name"
+    t.text "description"
+    t.string "img_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_events", force: :cascade do |t|
@@ -81,6 +109,9 @@ ActiveRecord::Schema.define(version: 2019_07_20_203732) do
     t.string "photo_url"
   end
 
+  add_foreign_key "achievement_goals", "achievements"
+  add_foreign_key "achievement_goals", "goals"
+  add_foreign_key "achievements", "venues"
   add_foreign_key "events", "venues"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"
