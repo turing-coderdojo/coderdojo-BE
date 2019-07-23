@@ -613,14 +613,14 @@ mutation{
 ```
 
 ### logAttendance
-This allows a student user to have their attendance logged when request is made with a valid event_id and event_code.  
+This allows a student user to have their attendance logged when request is made with a valid event_code.  
 
 Token required. will error if current user role is anything other than student or if student has already had their attendance counted for this event.
 
 Sample Request:
 ```
 mutation{
-  logAttendance(eventId: 4, eventCode:"8783ba89"){
+  logAttendance(eventCode:"8783ba"){
     id
   }
 }
