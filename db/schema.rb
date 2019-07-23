@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_22_212556) do
+ActiveRecord::Schema.define(version: 2019_07_23_155319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,18 @@ ActiveRecord::Schema.define(version: 2019_07_22_212556) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "student_achv_goals", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "achievement_goal_id"
+    t.datetime "started_at"
+    t.datetime "completed_at"
+    t.boolean "notified"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["achievement_goal_id"], name: "index_student_achv_goals_on_achievement_goal_id"
+    t.index ["user_id"], name: "index_student_achv_goals_on_user_id"
+  end
+
   create_table "user_events", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "event_id"
@@ -113,6 +125,8 @@ ActiveRecord::Schema.define(version: 2019_07_22_212556) do
   add_foreign_key "achievement_goals", "goals"
   add_foreign_key "achievements", "venues"
   add_foreign_key "events", "venues"
+  add_foreign_key "student_achv_goals", "achievement_goals"
+  add_foreign_key "student_achv_goals", "users"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"
   add_foreign_key "venue_admins", "users"
