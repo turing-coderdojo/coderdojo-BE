@@ -27,6 +27,12 @@ module Mutations
                  zip: nil)
 
       current_user = context[:current_user]
+      event_code = SecureRandom.hex(3)
+
+      while Event.find_by(event_code: event_code)
+        event_code = SecureRandom.hex(3)
+      end
+
 
       if (current_user && current_user.is_venue_admin?(venue_id)) ||
         (current_user && (current_user[:role] == 3))
@@ -35,7 +41,7 @@ module Mutations
                        start_time: start_time,
                          end_time: end_time,
                          venue_id: venue_id,
-                       event_code: SecureRandom.hex(3))
+                       event_code: event_code)
         if street1
           event.addresses.create(
             street_1: street1,
