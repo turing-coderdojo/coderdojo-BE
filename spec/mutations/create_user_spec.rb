@@ -20,7 +20,7 @@ class Mutations::CreateUserTest < ActiveSupport::TestCase
       assert user.persisted?
       assert_equal user.username, 'Duce'
       assert_equal user.password, 'password'
-      assert_equal user.addresses[0].city, 'Denver'
+      assert_equal user.addresses[0].city, 'denver'
     end
   end
 end

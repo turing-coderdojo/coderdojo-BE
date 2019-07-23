@@ -37,7 +37,7 @@ module Mutations
         venue.addresses.create(
           street_1: street1,
           street_2: street2,
-              city: city,
+              city: city.downcase,
              state: state,
                zip: zip)
         return venue

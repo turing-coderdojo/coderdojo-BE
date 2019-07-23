@@ -43,7 +43,7 @@ module Types
 
     def all_venues(city: nil, id: nil)
       if city
-        Venue.joins(:addresses).where(addresses: {city: city})
+        Venue.joins(:addresses).where(addresses: {city: city.downcase})
       elsif id
         Venue.where(id: id)
       else
