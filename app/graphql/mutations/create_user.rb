@@ -27,22 +27,28 @@ module Mutations
                 state: nil,
                   zip: nil)
 
-      user = User.create!(
-        email: email,
-        username: username,
-        password: password,
-        role: 1,
-        name: name,
-        phone_number: phone_number)
+      existing_user = User.find_by(username: username)
 
-      address = user.addresses.create!(
-        street_1: street1,
-        street_2: street2,
-            city: city,
-           state: state,
-             zip: zip)
+      if existing_user
+        GraphQL::ExecutionError.new("User already exists!")
+      else
+        user = User.create!(
+          email: email,
+          username: username,
+          password: password,
+          role: 1,
+          name: name,
+          phone_number: phone_number)
 
-      return user
+        address = user.addresses.create!(
+          street_1: street1,
+          street_2: street2,
+              city: city,
+             state: state,
+               zip: zip)
+
+        return user
+      end
     end
   end
 end
