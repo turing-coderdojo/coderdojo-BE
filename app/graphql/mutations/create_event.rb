@@ -34,7 +34,8 @@ module Mutations
                             notes: notes,
                        start_time: start_time,
                          end_time: end_time,
-                         venue_id: venue_id)
+                         venue_id: venue_id,
+                       event_code: SecureRandom.hex(3))
         if street1
           event.addresses.create(
             street_1: street1,
