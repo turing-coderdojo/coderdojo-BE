@@ -7,6 +7,7 @@ module Types
     field :role, Integer, null: true
     field :name, String, null: true
     field :notes, String, null: true
+    field :birthdate, String, null: true
     field :phone_number, String, null: true
     field :guardian_id, UserType, null: true, method: :guardian
     field :students, [UserType], null: true, method: :students
