@@ -14,6 +14,7 @@ module Types
     field :addresses, [AddressType], null: true, method: :addresses
     field :events_attended, [EventType], null: true, method: :events
     field :venues, [VenueType], null: true, method: :venues
+    field :student_achv_goals, [StudentAchvGoalType], null: true, method: :student_achv_goals
     field :created_at, String, null: false
     field :updated_at, String, null: false
   end
