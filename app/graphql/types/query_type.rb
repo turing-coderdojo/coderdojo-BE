@@ -85,12 +85,12 @@ module Types
 
     def past_events(venue_id: nil)
       time = Time.now.to_formatted_s(:db)
-      Event.where(venue_id: venue_id).where("start_time < ?", time).limit(3).order(start_time: :asc)
+      Event.where(venue_id: venue_id).where("start_time < ?", time).order(start_time: :desc).limit(3)
     end
 
     def future_events(venue_id: nil)
       time = Time.now.to_formatted_s(:db)
-      Event.where(venue_id: venue_id).where("start_time > ?", time).limit(3)
+      Event.where(venue_id: venue_id).where("start_time > ?", time).order(start_time: :asc)
     end
   end
 end
