@@ -7,6 +7,6 @@ class Event < ApplicationRecord
   belongs_to :venue
   has_many :addresses, :as => :addressable
 
-  has_many :user_events
+  has_many :user_events, dependent: :nullify
   has_many :users, through: :user_events
 end

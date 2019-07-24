@@ -7,6 +7,7 @@ module Types
     field :create_venue_admin, mutation: Mutations::CreateVenueAdmin
     field :create_event, mutation: Mutations::CreateEvent
     field :update_event, mutation: Mutations::UpdateEvent
+    field :delete_event, mutation: Mutations::DeleteEvent
     field :log_attendance, mutation: Mutations::LogAttendance
   end
 end
