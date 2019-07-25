@@ -15,4 +15,14 @@ describe User, type: :model do
     it{should have_many(:events)}
     it{should have_many(:student_achv_goals)}
   end
+
+  describe 'instance_methods' do
+    it 'is_venue_admin?' do
+      admin_1 = User.create(name: "Admin One", username: "admin1", email: "example@admin1.com", password: "password", role: 2, phone_number: "5555555553")
+      venue_1 = Venue.create(name: "Venue One", notes: "Here be Dragons", email: "example@venue.com", web_url: "www.venueone.com")
+      venue_admin = VenueAdmin.create(user_id: admin_1.id, venue_id: venue_1.id)
+
+    expect(admin_1.is_venue_admin?(venue_1.id)).to eq(venue_admin)
+    end
+  end
 end
