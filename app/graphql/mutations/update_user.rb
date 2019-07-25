@@ -42,7 +42,7 @@ module Mutations
 
       if current_user.guardian_id != nil
         GraphQL::ExecutionError.new("Not Authorized to update!")
-      elsif student || current_user.students.include?(student)
+      elsif current_user.role == 0 || current_user.students.include?(student)
         student.update(student_params)
         user = student
         token = Base64.encode64(user.username)
