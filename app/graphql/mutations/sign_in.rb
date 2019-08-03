@@ -1,7 +1,6 @@
 module Mutations
   class SignIn < Mutations::BaseMutation
     argument :username, String, required: false
-    argument :email, String, required: false
     argument :password, String, required: true
 
     field :token, String, null: true
