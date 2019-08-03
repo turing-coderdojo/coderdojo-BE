@@ -13,9 +13,17 @@ module Mutations
         user = User.find_by(username: username)
       end
 
-      return GraphQL::ExecutionError.new("Invalid Email/Username!") unless user
-      return GraphQL::ExecutionError.new("Invalid Password!") unless user.authenticate(password)
+      prng = Random.new
+      unless user
+        sleep prng.rand(1000)/1000
+        return GraphQL::ExecutionError.new("Invalid credentials")
+      end
 
+      unless user.authenticate(password)
+        sleep prng.rand(1000)/1000
+        return GraphQL::ExecutionError.new("Invalid credentials")
+      end
+      
       token = Base64.encode64(user.username)
       {
         token: token,
