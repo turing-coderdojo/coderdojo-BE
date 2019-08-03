@@ -2,12 +2,18 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
 
-User.create(name: "Ian Douglas", username: "ian.douglas", email: "ian.douglas@iandouglas.com", password: "aaawtf", role: 3)
-User.create(name: "Steve Thompson", username: "scthomps312", email: "scthomps312@gmail.com", password: "aaawtf", role: 3)
-User.create(name: "Joe Haynes", username: "jphaynes", email: "jphaynes1966@gmail.com", password: "aaawtf", role: 3)
+superuser_1 = User.create(name: "Ian Douglas", username: "ian.douglas", email: "ian.douglas@iandouglas.com", password: "aaawtf", role: 3)
+superuser_2 = User.create(name: "Steve Thompson", username: "scthomps312", email: "scthomps312@gmail.com", password: "aaawtf", role: 3)
+superuser_3 = User.create(name: "Joe Haynes", username: "jphaynes", email: "jphaynes1966@gmail.com", password: "aaawtf", role: 3)
 
 venue_1 = Venue.create(name: "CoderDojo Denver")
 venue_2 = Venue.create(name: "MakerDojo Denver")
+
+VenueAdmin.create(user_id: superuser_1.id, venue_id: venue_1.id)
+VenueAdmin.create(user_id: superuser_1.id, venue_id: venue_2.id)
+VenueAdmin.create(user_id: superuser_2.id, venue_id: venue_1.id)
+VenueAdmin.create(user_id: superuser_3.id, venue_id: venue_1.id)
+
 venue_1.addresses.create(street_1: "1331 17th St", street_2: "Suite LL-100", city: "denver", state: "CO", zip: "80202")
 venue_2.addresses.create(street_1: "1331 17th St", street_2: "Suite LL-100", city: "denver", state: "CO", zip: "80202")
 
