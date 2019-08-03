@@ -5,4 +5,8 @@ class Address < ApplicationRecord
   validates_presence_of :zip
 
   belongs_to :addressable, polymorphic: true, optional: true
+
+  def capitalize_city
+    self.city.capitalize
+  end
 end
