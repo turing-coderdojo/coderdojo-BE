@@ -13,6 +13,7 @@ module Mutations
         user = User.find_by(username: username)
       end
 
+
       prng = Random.new
       unless user
         sleep prng.rand(1000)/1000
