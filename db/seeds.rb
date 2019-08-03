@@ -5,6 +5,12 @@
 User.create(name: "Ian Douglas", username: "ian.douglas", email: "ian.douglas@iandouglas.com", password: "aaawtf", role: 3)
 User.create(name: "Steve Thompson", username: "scthomps312", email: "scthomps312@gmail.com", password: "aaawtf", role: 3)
 User.create(name: "Joe Haynes", username: "jphaynes", email: "jphaynes1966@gmail.com", password: "aaawtf", role: 3)
+
+venue_1 = Venue.create(name: "CoderDojo Denver")
+venue_2 = Venue.create(name: "MakerDojo Denver")
+venue_1.addresses.create(street_1: "1331 17th St", street_2: "Suite LL-100", city: "denver", state: "CO", zip: "80202")
+venue_2.addresses.create(street_1: "1331 17th St", street_2: "Suite LL-100", city: "denver", state: "CO", zip: "80202")
+
 # admin_1 = User.create(name: "Admin One", username: "admin1", email: "example@admin1.com", password: "password", role: 2, phone_number: "5555555553")
 # admin_2 = User.create(name: "Admin Two", username: "admin2", email: "example@admin2.com", password: "password", role: 2, phone_number: "5555555515")
 # admin_3 = User.create(name: "Admin Three", username: "admin3", email: "example@admin3.com", password: "password", role: 2, phone_number: "5555555525")
