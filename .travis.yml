@@ -14,7 +14,7 @@ script:
 - bundle exec rspec
 deploy:
   provider: heroku
-  app: pure-castle-14648
+  app: cryptic-stream-22818
   on:
     repo: turing-coderdojo/coderdojo-BE
   api_key:
