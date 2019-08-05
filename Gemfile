@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
+#implement CORS
+gem 'rack-cors'
 #implement graphQL
 gem 'graphql'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -44,7 +46,6 @@ group :development, :test do
   gem 'capybara'
   gem 'pry'
   gem 'shoulda-matchers', '~> 3.1'
-  gem 'simplecov'
 end
 
 group :development do

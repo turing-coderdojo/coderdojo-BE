@@ -29,5 +29,14 @@ module CoderdojoBe
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    #Configure CORS
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:post] #only post needed for graphql
+      end
+    end
+    
   end
 end
