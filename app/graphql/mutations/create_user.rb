@@ -27,14 +27,14 @@ module Mutations
                 state: nil,
                   zip: nil)
 
-      existing_user = User.find_by(username: username)
+      existing_user = User.find_by(username: username.downcase)
 
       if existing_user
         GraphQL::ExecutionError.new("User already exists!")
       else
         user = User.create!(
           email: email,
-          username: username,
+          username: username.downcase,
           password: password,
           role: 1,
           name: name,
