@@ -10,7 +10,7 @@ module Mutations
 
       user = User.find_by(email: name_or_email)
       if !user
-        user = User.find_by(username: name_or_email)
+        user = User.find_by(username: name_or_email.downcase)
       end
 
 

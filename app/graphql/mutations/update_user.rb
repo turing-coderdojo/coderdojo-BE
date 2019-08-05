@@ -29,13 +29,13 @@ module Mutations
       end
 
       student_params = {birthdate: birthdate,
-        username: username,
+        username: username.downcase,
         password: password,
         name: name,
         role: 0}
 
       user_params = {email: email,
-          username: username,
+          username: username.downcase,
           password: password,
           name: name,
           phone_number: phone_number}

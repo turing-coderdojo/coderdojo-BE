@@ -12,13 +12,13 @@ module Mutations
                 name: nil,
          birthdate: nil)
 
-      existing_user = User.find_by(username: username)
+      existing_user = User.find_by(username: username.downcase)
 
       if existing_user
         GraphQL::ExecutionError.new("User already exists!")
       elsif context[:current_user] && (context[:current_user][:role] >= 1)
         User.create!(
-          username: username,
+          username: username.downcase,
           password: password,
               role: 0,
               name: name,
@@ -28,7 +28,7 @@ module Mutations
         GraphQL::ExecutionError.new("Students cannot create students!")
       else
        User.create!(
-         username: username,
+         username: username.downcase,
          password: password,
              role: 0,
              name: name,
