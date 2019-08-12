@@ -11,8 +11,11 @@ This project is for the Turing mod 4 cross-pollination project. It is a new user
 
 Project is deployed at https://pure-castle-14648.herokuapp.com This project has no views and the endpoint described below is the sole access point for this application.
 
+### Schema
+![image](https://user-images.githubusercontent.com/45211960/62880040-badda300-bce9-11e9-9c5c-b39d00aee6fd.png)
+
 ### GraphQL
-This API runs on GraphQL. All queries and mutations (DB changes) are made via a POST to "/graphql".
+After working wit our client we came up with the schema above. We chose to use GraphQL for this project due to the extensive querying and joins that this project requires. All queries and mutations (DB changes) are made via a POST to "/graphql".
 
 ## Available Queries
 
