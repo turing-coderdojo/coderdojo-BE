@@ -15,7 +15,7 @@ Project is deployed at https://pure-castle-14648.herokuapp.com This project has 
 ![image](https://user-images.githubusercontent.com/45211960/62880040-badda300-bce9-11e9-9c5c-b39d00aee6fd.png)
 
 ### GraphQL
-After working wit our client we came up with the schema above. We chose to use GraphQL for this project due to the extensive querying and joins that this project requires. All queries and mutations (DB changes) are made via a POST to "/graphql".
+After working with our client we came up with the schema above. We chose to use GraphQL for this project due to the extensive querying and joins that this project requires. All queries and mutations (DB changes) are made via a POST to "/graphql".
 
 ## Available Queries
 
